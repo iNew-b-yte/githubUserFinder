@@ -11,6 +11,16 @@ function HomePage() {
         event.preventDefault();
 
         const value = document.getElementById("name").value;
+
+        if (value === "") {
+            document.getElementById("warning").setAttribute("class", "d-block text-danger fw-light");
+            setTimeout(() => {
+                document.getElementById("warning").setAttribute("class", "d-none");
+            }, 2000);
+            return;
+        }
+
+
         setUserName(value);
 
     }
@@ -37,7 +47,7 @@ function HomePage() {
                         id="name"
                     />
                     <button className='py-3 px-5' type='submit'>Search</button>
-                    <h6 className={userName === "" ? "d-block text-danger" : "d-none text-danger"}
+                    <h6 className="d-none"
                         id="warning">
                         username is mandatory..!!
                     </h6>
